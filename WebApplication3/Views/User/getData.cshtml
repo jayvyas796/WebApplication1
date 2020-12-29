@@ -1,0 +1,35 @@
+﻿@model List<WebApplication3.Models.userprofile>
+
+
+@{
+    ViewBag.Title = "getData";
+}
+
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Class</th>
+    </tr>
+    @foreach (var usr in Model)
+    {
+<tr>
+    <td>@usr.name</td>
+    <td>@usr.email</td>
+    <td>@usr.gender</td>
+
+    @if (System.IO.File.Exists(Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Images"), @usr.Profile)))
+    {
+
+        <td><img src="/Images/@Url.Content(@usr.Profile)" width="200px" height="200px"/></td>
+
+    }
+    else
+    {
+        
+    }
+
+</tr>
+    }
+</table>
+
